@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import NavBarComponent from "../components/NavBarComponent/NavBarComponent";
-import ItemListContainer from "../pages/ItemListContainer";
+import ItemListContainerComponent from "../components/ItemListContainerComponent/ItemListContainerComponent";
 
 const MainRoutes = () => {
   return (
@@ -10,7 +10,7 @@ const MainRoutes = () => {
       <NavBarComponent />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ItemListContainer />} />
+        <Route path="/products" element={<ItemListContainerComponent />} />
       </Routes>
     </Router>
   );
