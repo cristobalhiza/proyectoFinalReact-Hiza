@@ -3,11 +3,18 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 import { Link } from "react-router-dom";
-import useProductsByCategory from "../../hooks/UseProductByCategory";
+import useCollectionItems from "../../hooks/useCollectionItems";
 
 const NavBarComponent = () => {
   const [state, setState] = useState(false);
-  const { categories, loading, error } = useProductsByCategory();
+  const { items: products, loading, error } = useCollectionItems("products");
+
+  // Extraer categorías únicas
+  const categories = Array.from(new Set(products.flatMap(product => 
+    Array.isArray(product.category) ? product.category : []
+  )));
+
+  console.log('Categorías obtenidas:', categories); // Verificar las categorías obtenidas
 
   const navigation = [
     { title: "Inicio", path: "/" },

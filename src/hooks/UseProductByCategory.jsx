@@ -1,34 +1,28 @@
 import { useState, useEffect } from "react";
-import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 const useProductsByCategory = (category) => {
-  const [data, setData] = useState({ products: [], categories: [] });
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProducts = async () => {
       try {
         const db = getFirestore();
         const productsCollection = collection(db, "products");
-        
-        let productsSnapshot;
-        if (category) {
-          const q = query(productsCollection, where("category", "array-contains", category));
-          productsSnapshot = await getDocs(q);
-        } else {
-          productsSnapshot = await getDocs(productsCollection);
-        }
-
-        const productsList = productsSnapshot.docs.map((doc) => ({
+        const productsSnapshot = await getDocs(productsCollection);
+        const productsList = productsSnapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
 
-        // Obtener categorías únicas desde products
-        const categories = [...new Set(productsList.flatMap(product => product.category))];
-
-        setData({ products: productsList, categories });
+        // Filtra los productos por la categoría
+        const filteredProducts = productsList.filter(product =>
+          Array.isArray(product.category) && product.category.includes(category)
+        );
+        
+        setProducts(filteredProducts);
       } catch (err) {
         setError(err);
       } finally {
@@ -36,10 +30,10 @@ const useProductsByCategory = (category) => {
       }
     };
 
-    fetchData();
+    fetchProducts();
   }, [category]);
 
-  return { ...data, loading, error };
+  return { products, loading, error };
 };
 
 export default useProductsByCategory;
