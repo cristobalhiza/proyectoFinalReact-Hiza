@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 const ProductCard = ({ product }) => {
   return (
     <div key={product.id} className="bg-white rounded-lg shadow-2xl border-2 border-custom-red p-4">
-      <img src={product.image} alt={product.title} className="w-full h-48 object-cover rounded-t-lg" />
+      <div className="w-full h-48 flex items-center justify-center overflow-hidden rounded-t-lg">
+        <img src={product.image} alt={product.title} className="max-h-full max-w-full object-contain" />
+      </div>
       <div className="p-4">
         <h3 className="text-custom-blue font-bold text-xl">{product.title}</h3>
         <p className="text-sm text-gray-500">{product.category.join(', ')}</p>
