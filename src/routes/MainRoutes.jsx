@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import NavBarComponent from "../components/NavBarComponent/NavBarComponent";
-import ItemListContainerComponent from "../components/ItemListContainerComponent/ItemListContainerComponent";
+import ItemListContainerComponent from "../pages/Products"
 import CategoryPage from "../pages/Categories";
 import ItemDetail from "../pages/ItemDetail";
 
