@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getProductById } from "../services/productsServices";
+import { getFirestore, getDoc, doc } from "firebase/firestore";
 
 const useProductDetails = (itemId) => {
   const [product, setProduct] = useState({});
@@ -8,14 +8,17 @@ const useProductDetails = (itemId) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      setLoading(true);
-      setError(null);
       try {
-        const res = await getProductById(itemId);
-        setProduct(res.data);
+        const db = getFirestore();
+        const productRef = doc(db, "products", itemId);
+        const snapshot = await getDoc(productRef);
+        if (snapshot.exists()) {
+          setProduct({ id: snapshot.id, ...snapshot.data() });
+        } else {
+          setError('Product not found');
+        }
       } catch (err) {
-        console.error(err);
-        setError("Error de red: Fallo al recuperar");
+        setError(err.message);
       } finally {
         setLoading(false);
       }

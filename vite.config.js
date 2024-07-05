@@ -4,4 +4,10 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.jpg', '**/*.png'],
+  build: {
+    sourcemap: false,
+  },
+  server: {
+    sourcemap: false, 
+  }
 });

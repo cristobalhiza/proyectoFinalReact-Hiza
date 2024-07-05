@@ -25,6 +25,8 @@ dist-ssr
 
 firestore/
 
+.env
+
 # Node modules
 node_modules/
 

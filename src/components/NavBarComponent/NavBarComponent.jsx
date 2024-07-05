@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 import { Link } from "react-router-dom";
+import useProductsByCategory from "../../hooks/UseProductByCategory";
 
 const NavBarComponent = () => {
   const [state, setState] = useState(false);
+  const { categories, loading, error } = useProductsByCategory();
 
   const navigation = [
-    { title: "Home", path: "/" },
-    { title: "Products", path: "/products" },
-    { title: "Categories", path: "/categories" },
-    { title: "Contact Us", path: "/contact" },
+    { title: "Inicio", path: "/" },
+    { title: "Productos", path: "/products" },
+    { title: "Contacto", path: "/contact" },
   ];
 
   return (
@@ -62,60 +63,43 @@ const NavBarComponent = () => {
           }`}
         >
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-            {navigation.map((item, idx) =>
-              item.title === "Categories" ? (
-                <li
-                  key={idx}
-                  className="relative inline-block text-left text-white hover:text-gray-300"
-                >
-                  <Menu>
-                    <MenuButton className="inline-flex items-center text-white hover:text-gray-300 bg-custom-blue">
-                      {item.title}
-                      <ChevronDownIcon
-                        className="ml-2 h-5 w-5 text-white hover:text-gray-300 bg-custom-blue"
-                        aria-hidden="true"
-                      />
-                    </MenuButton>
-                    <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-custom-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1">
-                        <MenuItem>
-                          <Link
-                            to="/category1"
-                            className={`block px-4 py-2 text-sm "bg-gray-700 text-white"
-                            }`}
-                          >
-                            Category 1
-                          </Link>
+            {navigation.map((item, idx) => (
+              <li key={idx} className="text-white hover:text-gray-300">
+                <Link className="text-white" to={item.path}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+            {!loading && !error && categories.length > 0 && (
+              <li className="relative inline-block text-left text-white hover:text-gray-300">
+                <Menu>
+                  <MenuButton className="inline-flex items-center text-white hover:text-gray-300 bg-custom-blue">
+                    Categorías
+                    <ChevronDownIcon
+                      className="ml-2 h-5 w-5 text-white hover:text-gray-300 bg-custom-blue"
+                      aria-hidden="true"
+                    />
+                  </MenuButton>
+                  <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-custom-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                      {categories.map((category, index) => (
+                        <MenuItem key={index}>
+                          {({ active }) => (
+                            <Link
+                              to={`/category/${category}`}
+                              className={`block px-4 py-2 text-sm ${
+                                active ? "bg-gray-700 text-white" : "text-white"
+                              }`}
+                            >
+                              {category}
+                            </Link>
+                          )}
                         </MenuItem>
-                        <MenuItem>
-                        <Link
-                            to="/category2"
-                            className={`block px-4 py-2 text-sm "bg-gray-700 text-white"
-                            }`}
-                          >
-                            Category 2
-                          </Link>
-                        </MenuItem>
-                        <MenuItem>
-                        <Link
-                            to="/category3"
-                            className={`block px-4 py-2 text-sm "bg-gray-700 text-white"
-                            }`}
-                          >
-                            Category 3
-                          </Link>
-                        </MenuItem>
-                      </div>
-                    </MenuItems>
-                  </Menu>
-                </li>
-              ) : (
-                <li key={idx} className="text-white hover:text-gray-300">
-                  <Link className="text-white" to={item.path}>
-                    {item.title}
-                  </Link>
-                </li>
-              )
+                      ))}
+                    </div>
+                  </MenuItems>
+                </Menu>
+              </li>
             )}
           </ul>
         </div>
