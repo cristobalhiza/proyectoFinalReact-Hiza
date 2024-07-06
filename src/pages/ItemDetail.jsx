@@ -1,10 +1,13 @@
+// src/pages/ItemDetail.jsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import useProductDetails from '../hooks/useProductDetails';
+import { useCart } from '../context/CartContext';
 
 const ItemDetail = () => {
   const { itemId } = useParams();
   const { product, loading, error } = useProductDetails(itemId);
+  const { addToCart } = useCart();
 
   if (loading) {
     return <div className="container mx-auto py-8 mt-16">Loading...</div>;
@@ -30,11 +33,6 @@ const ItemDetail = () => {
       </div>
     </div>
   );
-};
-
-const addToCart = (product) => {
-  // Logic to add product to cart
-  console.log('Adding to cart:', product);
 };
 
 export default ItemDetail;

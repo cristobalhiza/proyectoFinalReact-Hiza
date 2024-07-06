@@ -9,12 +9,11 @@ const NavBarComponent = () => {
   const [state, setState] = useState(false);
   const { items: products, loading, error } = useCollectionItems("products");
 
-  // Extraer categorías únicas
   const categories = Array.from(new Set(products.flatMap(product => 
     Array.isArray(product.category) ? product.category : []
   )));
 
-  console.log('Categorías obtenidas:', categories); // Verificar las categorías obtenidas
+  console.log('Categorías obtenidas:', categories);
 
   const navigation = [
     { title: "Inicio", path: "/" },
@@ -23,7 +22,7 @@ const NavBarComponent = () => {
   ];
 
   return (
-    <nav className="bg-custom-blue w-full border-b md:border-0 fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-custom-blue w-full border-b md:border-0 fixed top-0 left-0 right-0 z-10">
       <div className="flex items-center justify-between px-4 max-w-screen-xl mx-auto h-16 md:px-8">
         <Link className="text-white" to="/">
           <h1 className="text-3xl">Court Corner</h1>
