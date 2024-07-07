@@ -1,28 +1,27 @@
-import { useState } from "react";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 import useCollectionItems from "../../hooks/useCollectionItems";
 
 const NavBarComponent = () => {
-  const [state, setState] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const { items: products, loading, error } = useCollectionItems("products");
+  const [categories, setCategories] = useState([]);
 
-  const categories = Array.from(
-    new Set(
-      products.flatMap((product) =>
+  useEffect(() => {
+    if (!loading && !error) {
+      const uniqueCategories = Array.from(new Set(products.flatMap(product =>
         Array.isArray(product.category) ? product.category : []
-      )
-    )
-  );
-
-  console.log("Categorías obtenidas:", categories);
+      )));
+      setCategories(uniqueCategories);
+    }
+  }, [products, loading, error]);
 
   const navigation = [
     { title: "Inicio", path: "/" },
     { title: "Productos", path: "/products" },
-    { title: "Contacto", path: "/contacto" },
+    { title: "Contacto", path: "/contact" },
   ];
 
   return (
@@ -31,12 +30,12 @@ const NavBarComponent = () => {
         <Link className="text-white" to="/">
           <h1 className="text-3xl">Court Corner</h1>
         </Link>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center">
           <button
             className="text-white outline-none p-2 rounded-md focus:border-gray-400 focus:border"
-            onClick={() => setState(!state)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {state ? (
+            {isMenuOpen ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -66,10 +65,13 @@ const NavBarComponent = () => {
               </svg>
             )}
           </button>
+          <div className="ml-4">
+            <CartWidgetComponent />
+          </div>
         </div>
         <div
           className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            state ? "block" : "hidden"
+            isMenuOpen ? "block" : "hidden"
           }`}
         >
           <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
@@ -80,37 +82,43 @@ const NavBarComponent = () => {
                 </Link>
               </li>
             ))}
-            {!loading && !error && categories.length > 0 && (
-              <li className="relative inline-block text-left text-white hover:text-gray-300">
-                <Menu>
-                  <MenuButton className="inline-flex items-center text-white hover:text-gray-300 bg-custom-blue">
-                    Categorías
-                    <ChevronDownIcon
-                      className="ml-2 h-5 w-5 text-white hover:text-gray-300 bg-custom-blue"
-                      aria-hidden="true"
-                    />
-                  </MenuButton>
-                  <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-custom-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
-                      {categories.map((category, index) => (
-                        <MenuItem key={index}>
-                          {({ active }) => (
-                            <Link
-                              to={`/category/${category}`}
-                              className={`block px-4 py-2 text-sm ${
-                                active ? "bg-gray-700 text-white" : "text-white"
-                              }`}
-                            >
-                              {category}
-                            </Link>
-                          )}
-                        </MenuItem>
-                      ))}
-                    </div>
-                  </MenuItems>
-                </Menu>
-              </li>
-            )}
+            <li className="relative inline-block text-left text-white hover:text-gray-300">
+              <button
+                className="inline-flex items-center text-white hover:text-gray-300 bg-custom-blue"
+                onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
+              >
+                Categorías
+                <svg
+                  className="ml-2 h-5 w-5 text-white hover:text-gray-300"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.293 9.293a1 1 0 011.414 0L10 12.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div
+                className={`absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-custom-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                  isCategoriesOpen ? "block" : "hidden"
+                }`}
+              >
+                <div className="py-1">
+                  {categories.map((category, index) => (
+                    <Link
+                      key={index}
+                      to={`/category/${category}`}
+                      className="block px-4 py-2 text-sm text-white hover:bg-gray-700"
+                    >
+                      {category}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
         <div className="hidden md:flex items-center space-x-5 text-white">
