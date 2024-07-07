@@ -3,6 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import useProductDetails from '../hooks/useProductDetails';
 import { useCart } from '../context/CartContext';
+import Loader from '../components/LoaderComponent/LoaderComponent';
 
 const ItemDetail = () => {
   const { itemId } = useParams();
@@ -10,7 +11,7 @@ const ItemDetail = () => {
   const { addToCart } = useCart();
 
   if (loading) {
-    return <div className="container mx-auto py-8 mt-16">Loading...</div>;
+    return <Loader />;
   }
 
   if (error) {

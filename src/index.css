@@ -1,7 +1,8 @@
+@import 'sweetalert2/dist/sweetalert2.min.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 :root {
   font-family: 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;

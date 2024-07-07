@@ -3,11 +3,12 @@ import 'tailwindcss/tailwind.css';
 import Meta from "../utils/Meta"
 import useCollectionItems from '../hooks/useCollectionItems';
 import ProductCard from '../components/ProductCardComponent/ProductCardComponent'; 
+import Loader from '../components/LoaderComponent/LoaderComponent';
 
 const ItemListContainerComponent = () => {
   const { items, loading, error } = useCollectionItems('products');
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (

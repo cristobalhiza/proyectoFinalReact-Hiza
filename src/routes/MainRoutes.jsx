@@ -7,6 +7,7 @@ import ItemListContainerComponent from "../pages/Products";
 import CategoryPage from "../pages/Categories";
 import ItemDetail from "../pages/ItemDetail";
 import { CartProvider } from "../context/CartContext";
+import Contact from "../pages/Contact";
 
 const MainRoutes = () => {
   return (
@@ -18,6 +19,7 @@ const MainRoutes = () => {
           <Route path="/products" element={<ItemListContainerComponent />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/products/:itemId" element={<ItemDetail />} />
+          <Route path="/contacto" element={<Contact />} />
         </Routes>
       </Router>
     </CartProvider>

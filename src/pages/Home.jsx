@@ -1,12 +1,16 @@
-import React from 'react'
-import HeroSectionComponent from '../components/HeroSectionComponent/HeroSectionComponent'
+import React, { useState } from 'react';
+import HeroSectionComponent from '../components/HeroSectionComponent/HeroSectionComponent';
+import LoaderComponent from '../components/LoaderComponent/LoaderComponent';
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
-    <HeroSectionComponent />
+      {loading && <LoaderComponent />}
+      <HeroSectionComponent setLoading={setLoading} />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -18,7 +18,7 @@ const NavBarComponent = () => {
   const navigation = [
     { title: "Inicio", path: "/" },
     { title: "Productos", path: "/products" },
-    { title: "Contacto", path: "/contact" },
+    { title: "Contacto", path: "/contacto" },
   ];
 
   return (

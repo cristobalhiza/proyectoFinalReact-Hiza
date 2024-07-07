@@ -1,9 +1,22 @@
-// src/components/ProductCard/ProductCard.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import Loader from '../LoaderComponent/LoaderComponent'
 
 const ProductCard = ({ product }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
   const { addToCart } = useCart();
 
   return (

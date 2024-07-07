@@ -1,13 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useProductsByCategory from "../hooks/UseProductByCategory";
-import ProductCard from "../components/ProductCardComponent/ProductCardComponent"; //
+import ProductCard from "../components/ProductCardComponent/ProductCardComponent"; 
+import Loader from "../components/LoaderComponent/LoaderComponent";
+
 
 const CategoryPage = () => {
   const { category } = useParams();
   const { products, loading, error } = useProductsByCategory(category);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
