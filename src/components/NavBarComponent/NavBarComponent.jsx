@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 import { Link } from "react-router-dom";
 import useCollectionItems from "../../hooks/useCollectionItems";
@@ -9,11 +9,15 @@ const NavBarComponent = () => {
   const [state, setState] = useState(false);
   const { items: products, loading, error } = useCollectionItems("products");
 
-  const categories = Array.from(new Set(products.flatMap(product => 
-    Array.isArray(product.category) ? product.category : []
-  )));
+  const categories = Array.from(
+    new Set(
+      products.flatMap((product) =>
+        Array.isArray(product.category) ? product.category : []
+      )
+    )
+  );
 
-  console.log('Categorías obtenidas:', categories);
+  console.log("Categorías obtenidas:", categories);
 
   const navigation = [
     { title: "Inicio", path: "/" },

@@ -15,7 +15,7 @@ const useProductDetails = (itemId) => {
         if (snapshot.exists()) {
           setProduct({ id: snapshot.id, ...snapshot.data() });
         } else {
-          setError('Product not found');
+          setError("Producto no encontrado");
         }
       } catch (err) {
         setError(err.message);

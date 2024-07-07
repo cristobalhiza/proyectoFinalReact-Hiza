@@ -12,16 +12,17 @@ const useProductsByCategory = (category) => {
         const db = getFirestore();
         const productsCollection = collection(db, "products");
         const productsSnapshot = await getDocs(productsCollection);
-        const productsList = productsSnapshot.docs.map(doc => ({
+        const productsList = productsSnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
 
-        // Filtra los productos por la categoría
-        const filteredProducts = productsList.filter(product =>
-          Array.isArray(product.category) && product.category.includes(category)
+        const filteredProducts = productsList.filter(
+          (product) =>
+            Array.isArray(product.category) &&
+            product.category.includes(category)
         );
-        
+
         setProducts(filteredProducts);
       } catch (err) {
         setError(err);

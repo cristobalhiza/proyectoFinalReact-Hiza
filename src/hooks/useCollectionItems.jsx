@@ -16,7 +16,7 @@ const useCollectionItems = (collectionName) => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log('Productos obtenidos:', itemsList); // Agregar este console.log
+        console.log("Productos obtenidos:", itemsList);
         setItems(itemsList);
       } catch (err) {
         setError(err);

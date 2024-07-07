@@ -8,6 +8,6 @@ export default defineConfig({
     sourcemap: false,
   },
   server: {
-    sourcemap: false, 
+    sourcemap: false,
   }
 });
