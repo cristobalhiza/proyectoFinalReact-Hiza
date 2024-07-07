@@ -20,7 +20,7 @@ Court Corner es una tienda en línea para equipos de tenis. Este proyecto está 
 
 ## Estructura del Proyecto
 
-\```
+```
 src/
 │
 ├── assets/                     # Imágenes y otros recursos estáticos
@@ -43,7 +43,7 @@ src/
 ├── App.jsx
 ├── index.jsx
 └── index.css
-\```
+```
 
 ## Instalación
 
