@@ -1,0 +1,18 @@
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9;
+}
+
+.loadingContainer p {
+  font-size: 1.5em;
+  color: #002f6c;
+}
