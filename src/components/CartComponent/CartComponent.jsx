@@ -11,6 +11,7 @@ import { useCart } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 import useOrder from "../../hooks/useOrder";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 const CartComponent = ({ open, setOpen }) => {
   const { cart, removeFromCart, clearCart, addToCart } = useCart();
@@ -200,12 +201,12 @@ const CartComponent = ({ open, setOpen }) => {
                         compra.
                       </p>
                       <div className="mt-6">
-                        <button
+                        <ButtonComponent
                           onClick={handleCreateOrder}
-                          className="flex items-center justify-center rounded-md bg-custom-green py-2 text-base font-medium text-white shadow-sm mx-10"
+                          className="flex items-center justify-center shadow-sm mx-10"
                         >
                           Finalizar Compra
-                        </button>
+                        </ButtonComponent>
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>

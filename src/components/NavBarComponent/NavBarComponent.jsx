@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 import useCollectionItems from "../../hooks/useCollectionItems";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 const NavBarComponent = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,9 +31,9 @@ const NavBarComponent = () => {
         <Link className="text-white" to="/">
           <h1 className="text-3xl">Court Corner</h1>
         </Link>
-        <div className="md:hidden flex items-center">
-          <button
-            className="text-white outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+        <div className="md:hidden flex items-center order-5 md:order-1">
+          <ButtonComponent
+            className="p-2 rounded-md focus:border-gray-400 focus:border font-bold"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -64,17 +65,17 @@ const NavBarComponent = () => {
                 />
               </svg>
             )}
-          </button>
+          </ButtonComponent>
           <div className="ml-4">
             <CartWidgetComponent />
           </div>
         </div>
         <div
-          className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+          className={`flex justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
             isMenuOpen ? "block" : "hidden"
           }`}
         >
-          <ul className="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+          <ul className="bg-custom-blue p-4 md:p-0 shadow-xl md:shadow-none rounded-lg space-y-6 mt-32 md:mt-0 md:static md:flex md:space-x-6 md:space-y-0">
             {navigation.map((item, idx) => (
               <li key={idx} className="text-white hover:text-gray-300">
                 <Link className="text-white" to={item.path}>
