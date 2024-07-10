@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ButtonComponent from "../components/ButtonComponent/ButtonComponent";
 
 const Contact = () => {
   const [agreed, setAgreed] = useState(false);
@@ -90,12 +91,12 @@ const Contact = () => {
           </div>
         </div>
         <div className="mt-10">
-          <button
+          <ButtonComponent
             type="submit"
-            className="block w-full rounded-md bg-custom-green px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-custom-blue-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-custom-blue"
+            className="block w-full"
           >
             Enviar
-          </button>
+          </ButtonComponent>
         </div>
       </form>
     </div>

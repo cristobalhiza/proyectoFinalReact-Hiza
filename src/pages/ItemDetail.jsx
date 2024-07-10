@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useProductDetails from "../hooks/useProductDetails";
 import { useCart } from "../context/CartContext";
 import Loader from "../components/LoaderComponent/LoaderComponent";
+import ButtonComponent from "../components/ButtonComponent/ButtonComponent";
 
 const ItemDetail = () => {
   const { itemId } = useParams();
@@ -37,12 +38,12 @@ const ItemDetail = () => {
             Precio: ${product.price}
           </p>
           <div className="flex justify-center">
-            <button
-              className="bg-custom-green text-white py-2 px-4 rounded"
+            <ButtonComponent
+              className=""
               onClick={() => addToCart(product)}
             >
               Agregar al Carrito
-            </button>
+            </ButtonComponent>
           </div>
         </div>
       </div>

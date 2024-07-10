@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import Loader from "../LoaderComponent/LoaderComponent";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +19,6 @@ const ProductCard = ({ product }) => {
   if (loading) {
     return <Loader />;
   }
-  const { addToCart } = useCart();
 
   return (
     <div
@@ -39,16 +40,16 @@ const ProductCard = ({ product }) => {
             ${product.price}
           </p>
         </div>
-        <div className="mt-4">
-          <button
-            className="bg-custom-green text-white py-2 px-4 rounded mr-2 shadow-md"
+        <div className="mt-2">
+          <ButtonComponent
+            className="mr-2 shadow-md"
             onClick={() => addToCart(product)}
           >
             Agregar al Carrito
-          </button>
+          </ButtonComponent>
           <Link
             to={`/products/${product.id}`}
-            className="bg-custom-green text-white py-2 px-4 rounded shadow-md"
+            className="bg-custom-green text-white p-3 rounded-lg shadow-md text-base font-normal border border-transparent hover:border-[#e2725b]"
           >
             Ver Más
           </Link>

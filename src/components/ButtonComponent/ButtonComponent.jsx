@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ButtonComponent = ({ children, className, ...props }) => {
+const ButtonComponent = ({ children, className = '', ...props }) => {
   return (
     <button
       className={`
@@ -33,10 +33,6 @@ const ButtonComponent = ({ children, className, ...props }) => {
 ButtonComponent.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-};
-
-ButtonComponent.defaultProps = {
-  className: '',
 };
 
 export default ButtonComponent;
