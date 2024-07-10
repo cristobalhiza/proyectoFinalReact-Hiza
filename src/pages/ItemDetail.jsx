@@ -18,8 +18,8 @@ const ItemDetail = () => {
   }
 
   return (
-    <div className="container mx-auto py-8 mt-16 p-16 w-4/5">
-      <div className="bg-white rounded-lg shadow-2xl border-2 border-custom-red p-4 mx-16">
+    <div className="container mx-auto py-8 mt-16 p-16 w-auto md:w-4/5">
+      <div className="bg-white rounded-lg shadow-2xl border-2 border-custom-red p-4 md:mx-16">
         <img
           src={product.image}
           alt={product.title}

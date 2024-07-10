@@ -97,7 +97,7 @@ const CartComponent = ({ open, setOpen }) => {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <DialogPanel className="pointer-events-auto w-screen max-w-md">
+                <DialogPanel className="pointer-events-auto w-screen max-w-md sm:max-w-sm md:max-w-md lg:max-w-lg">
                   <div className="flex h-full flex-col overflow-hidden bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">
@@ -116,7 +116,7 @@ const CartComponent = ({ open, setOpen }) => {
                         </div>
                       </div>
 
-                      <div className="mt-8 overflow-y-auto max-h-[40dvh]">
+                      <div className="mt-8 overflow-y-auto max-h-[40dvh] sm:max-h-[30vh] md:max-h-[40vh]">
                         <div className="flow-root">
                           <ul
                             role="list"
