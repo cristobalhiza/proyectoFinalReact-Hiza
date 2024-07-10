@@ -8,6 +8,7 @@ import CategoryPage from "../pages/Categories";
 import ItemDetail from "../pages/ItemDetail";
 import { CartProvider } from "../context/CartContext";
 import Contact from "../pages/Contact";
+import FooterComponent from "../components/FooterComponent/FooterComponent";
 
 const MainRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const MainRoutes = () => {
           <Route path="/products/:itemId" element={<ItemDetail />} />
           <Route path="/contacto" element={<Contact />} />
         </Routes>
+        <FooterComponent />
       </Router>
     </CartProvider>
   );

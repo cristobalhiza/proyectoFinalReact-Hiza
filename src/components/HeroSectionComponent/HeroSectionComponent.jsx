@@ -62,7 +62,7 @@ const HeroSectionComponent = ({ setLoading }) => {
                 </p>
                 <Link
                   to="/products"
-                  className="bg-custom-green text-white px-6 py-3 rounded-lg text-lg md:text-xl font-semibold hover:bg-green-600 transition duration-300 ease-in-out shadow-lg drop-shadow-md"
+                  className="bg-custom-green text-white px-6 py-3 rounded-lg text-lg md:text-xl font-semibold drop-shadow-md hover:text-custom-red"
                 >
                   Ver Productos
                 </Link>

@@ -4,7 +4,6 @@
 @tailwind utilities;
 
 :root {
-  font-family: "Roboto", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -18,10 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  text-decoration: inherit;
-}
 button:hover,
 a:hover {
   color: #e2725b;
@@ -35,7 +30,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-h1 {
+h1, .heading1 {
   font-family: "Montserrat", sans-serif;
 }
 
