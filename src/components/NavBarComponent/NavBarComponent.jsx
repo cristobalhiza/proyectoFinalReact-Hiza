@@ -26,7 +26,7 @@ const NavBarComponent = () => {
   ];
 
   return (
-    <nav className="bg-custom-blue w-full fixed top-0 left-0 right-0 z-10">
+    <nav className="bg-custom-blue w-full fixed top-0 left-0 right-0 opacity-90 z-10 border border-solid border-white">
       <div className="flex items-center justify-evenly md:justify-between max-w-screen-xl mx-auto h-16 md:px-8">
         <Link className="text-white justify-self-start" to="/">
           <h1 className="text-3xl ml-4">Court Corner</h1>
@@ -71,26 +71,26 @@ const NavBarComponent = () => {
           </div>
         </div>
         <div
-          className={`flex justify-self-center justify-end pb-3 mt-28 absolute md:static md:block md:pb-0 md:mt-0 ${
+          className={`flex justify-self-center justify-end pb-3 absolute md:static md:block md:pb-0 md:mt-0 top-16 ${
             isMenuOpen ? "block" : "hidden"
           }`}
         >
-          <ul className="justify-self-end bg-custom-blue p-4 md:p-0 shadow-xl md:shadow-none rounded-lg space-y-6 mt-40 md:mt-0 md:static md:flex md:space-x-6 md:space-y-0">
+          <ul className="justify-self-end bg-custom-blue py-4 pb-0 md:p-0 shadow-xl md:shadow-none md:mt-0 md:static md:flex md:space-x-6 md:space-y-0 w-screen md:w-auto border-y border-white md:border-0">
             {navigation.map((item, idx) => (
-              <li key={idx} className="text-white hover:text-gray-300">
-                <Link className="text-white" to={item.path}>
+              <li key={idx} className="text-white hover:text-gray-300 text-center border-b md:border-0 py-2">
+                <Link className="text-white text-base md:text-lg" to={item.path}>
                   {item.title}
                 </Link>
               </li>
             ))}
-            <li className="relative inline-block text-left text-white hover:text-gray-300">
+            <li className="text-white hover:text-gray-30 text-center md:border-0 py-2">
               <button
-                className="inline-flex items-center text-white hover:text-gray-300 bg-custom-blue"
+                className="inline-flex items-center text-white bg-custom-blue h-full text-base md:text-lg"
                 onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
               >
                 Categorías
                 <svg
-                  className="ml-2 h-5 w-5 text-white hover:text-gray-300"
+                  className="ml-2 h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -103,16 +103,16 @@ const NavBarComponent = () => {
                 </svg>
               </button>
               <div
-                className={`absolute z-10 mt-2 w-28 origin-top-right rounded-md bg-custom-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                className={`absolute z-10 md:mt-2 md:w-28 origin-top-right shadow-lg w-screen ${
                   isCategoriesOpen ? "block" : "hidden"
                 }`}
               >
-                <div className="py-1">
+                <div className="md:py-1 border-b border-white md:border-0">
                   {categories.map((category, index) => (
                     <Link
                       key={index}
                       to={`/category/${category}`}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-700"
+                      className="block px-4 py-2 text-sm text-white hover:bg-white hover:text-custom-blue bg-custom-blue"
                     >
                       {category}
                     </Link>

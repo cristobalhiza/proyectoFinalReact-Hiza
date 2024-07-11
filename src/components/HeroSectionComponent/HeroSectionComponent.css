@@ -39,45 +39,4 @@
   align-items: center;
 }
 
-.text-center {
-  text-align: center;
-  color: white;
-}
 
-.text-center h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.text-center p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-.text-center a {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #00a676;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-}
-
-.text-center a:hover {
-  background-color: #008860;
-}
-
-@media (min-width: 768px) {
-  .text-center h1 {
-    font-size: 3rem;
-  }
-
-  .text-center p {
-    font-size: 1.5rem;
-  }
-
-  .text-center a {
-    font-size: 1.5rem;
-  }
-}
