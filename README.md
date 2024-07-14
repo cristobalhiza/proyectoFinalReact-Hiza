@@ -10,7 +10,7 @@ Court Corner es una tienda en línea para equipos de tenis. Este proyecto está 
 - **Vite**: Herramienta de desarrollo rápida y ligera para React.
 - **Tailwind CSS**: Framework de CSS para un diseño rápido y eficiente.
 - **Firebase**: Plataforma para construir aplicaciones web y móviles.
-  - **Firestore**: Base de datos NoSQL de Firebase.
+- **Firestore**: Base de datos NoSQL de Firebase.
 - **React Router**: Librería para el manejo de rutas en aplicaciones React.
 - **SweetAlert2**: Biblioteca para alertas bonitas y personalizables.
 - **Heroicons**: Conjunto de iconos para interfaces de usuario.
@@ -25,12 +25,14 @@ src/
 │
 ├── assets/                     # Imágenes y otros recursos estáticos
 ├── components/                 # Componentes reutilizables
+│   ├── ButtonComponent/        # Componente para botón reutilizable
 │   ├── CartComponent/          # Componente para el carrito de compras (Slide-over)
 │   ├── CartWidgetComponent     # Componente para el ícono carrito de compras nav bar
 │   ├── HeroSectionComponent/   # Componente para la sección hero 
 │   ├── LoaderComponent/        # Componente para el loader
 │   ├── NavBarComponent/        # Componente para la barra de navegación
-│   └── ProductCardComponent/   # Componente para la tarjeta de productos
+│   ├── ProductCardComponent/   # Componente para la tarjeta de productos
+|   └── FooterComponent/        # Componente para el footer del sitio
 ├── context/                    # Archivos de contexto (CartContext)
 ├── hooks/                      # Hooks personalizados (principalmente obtener información base de datos)
 ├── pages/                      # Páginas de la aplicación
