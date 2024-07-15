@@ -49,7 +49,7 @@ const ProductCard = ({ product }) => {
           </ButtonComponent>
           <Link
             to={`/products/${product.id}`}
-            className="bg-custom-green text-white p-3 rounded-lg shadow-md text-base font-normal border border-transparent hover:border-[#e2725b]"
+            className="inline-block mt-2 bg-custom-green text-white p-2 rounded-lg shadow-md text-base font-normal border border-transparent hover:border-[#e2725b]"
           >
             Ver Más
           </Link>
