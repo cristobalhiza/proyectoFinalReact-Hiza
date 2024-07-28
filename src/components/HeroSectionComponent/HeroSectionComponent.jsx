@@ -11,6 +11,7 @@ const HeroSectionComponent = ({ setLoading }) => {
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 640);
 
   const images = [tennisImage1, tennisImage2, tennisImage3];
+  const totalImages = isLargeScreen ? images.length : 1;
 
   const handleImageLoad = () => {
     setImagesLoaded((prev) => prev + 1);
@@ -26,10 +27,10 @@ const HeroSectionComponent = ({ setLoading }) => {
   }, []);
 
   useEffect(() => {
-    if (imagesLoaded === images.length) {
+    if (imagesLoaded === totalImages) {
       setLoading(false);
     }
-  }, [imagesLoaded, images.length, setLoading]);
+  }, [imagesLoaded, totalImages, setLoading]);
 
   useEffect(() => {
     if (isLargeScreen) {
