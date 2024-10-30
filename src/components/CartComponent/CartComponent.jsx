@@ -97,9 +97,9 @@ const CartComponent = ({ open, setOpen }) => {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <DialogPanel className="pointer-events-auto w-screen max-w-md sm:max-w-sm md:max-w-md lg:max-w-lg">
+                <DialogPanel className="pointer-events-auto w-screen min-w-0 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
                   <div className="flex h-full flex-col overflow-hidden bg-white shadow-xl">
-                    <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                    <div className="flex-1 overflow-y-auto px-2 sm:px-4 py-6">
                       <div className="flex items-start justify-between">
                         <DialogTitle className="text-lg font-medium text-custom-blue">
                           Carrito de Compras
@@ -132,7 +132,7 @@ const CartComponent = ({ open, setOpen }) => {
                                   />
                                 </div>
 
-                                <div className="ml-4 flex flex-1 flex-col">
+                                <div className="ml-4 flex flex-1 flex-col pr-4">
                                   <div>
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                       <h3 className="text-custom-blue">

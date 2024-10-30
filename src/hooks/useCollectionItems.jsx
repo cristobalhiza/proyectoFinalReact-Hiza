@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../main.jsx"
 
 const useCollectionItems = (collectionName) => {
   const [items, setItems] = useState([]);
@@ -9,7 +10,6 @@ const useCollectionItems = (collectionName) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const db = getFirestore();
         const itemsCollection = collection(db, collectionName);
         const itemsSnapshot = await getDocs(itemsCollection);
         const itemsList = itemsSnapshot.docs.map((doc) => ({
