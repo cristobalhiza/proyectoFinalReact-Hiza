@@ -10,7 +10,7 @@ const FooterComponent = () => {
             <p className="text-sm">Equipando tu juego desde 2024</p>
           </div>
           <div>
-            <p className="text-sm">&copy; 2024 Court Corner. Todos los derechos reservados.</p>
+            <p className="text-sm">&copy; 2024 - 2025 Court Corner | Desarrollado por Cristobal Hiza | cristobalhiza.com</p>
           </div>
           <div className="mb-4 md:mb-0">
           <h2 className='font-heading text-center p-2'>Mapa del sitio</h2>
